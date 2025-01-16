@@ -1,7 +1,14 @@
 import { BrowserRouter } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import { ThemeProvider } from 'styled-components'
+import Hero from './components/sections/Hero'
+import { ThemeProvider, styled } from 'styled-components'
 import { darkTheme } from './utils/Themes'
+
+const Body = styled.div`
+  background-color: ${({theme}) => theme.bg};
+  color: ${({theme}) => theme.text_primary};
+  height: 90vh;
+`
 
 function App() {
 
@@ -9,7 +16,9 @@ function App() {
     <ThemeProvider theme={darkTheme}>
     <BrowserRouter>
       <Navbar />
-      Hello App.js
+      <Body>
+      <Hero />
+      </Body>
      </BrowserRouter>
     </ThemeProvider>
 
