@@ -7,7 +7,12 @@ import { darkTheme } from './utils/Themes'
 const Body = styled.div`
   background-color: ${({theme}) => theme.bg};
   color: ${({theme}) => theme.text_primary};
-  height: 90vh;
+  min-height: 100vh;
+  padding: 0 100px;
+  @media (max-width: 960px){
+    padding: 0 10px;
+  };
+  overflow: hidden;
 `
 
 function App() {
@@ -15,8 +20,8 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
     <BrowserRouter>
-      <Navbar />
       <Body>
+      <Navbar />
       <Hero />
       </Body>
      </BrowserRouter>
