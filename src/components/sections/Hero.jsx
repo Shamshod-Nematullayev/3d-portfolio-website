@@ -6,6 +6,7 @@ import HeroImg from '../../images/hero_img.jpg'
 import HeroBgAnimation from '../HeroBgAnimation/index'
 import {Tilt} from 'react-tilt'
 import {motion} from 'framer-motion'
+import {headContainerAnimation, headTextAnimation, headContentAnimation} from '../../utils/motion'
 
 const HeroContainer = styled.div`
     padding: 30px 40px;
@@ -145,9 +146,10 @@ const HeroBg = styled.div`
 function Hero() {
   return (
     <HeroContainer>
-        <motion.div>
+        <motion.div {...headContainerAnimation}>
         <InnerConteinter>
             <LeftContainer>
+                <motion.div {...headTextAnimation}>
                 <Title>
                     Hi, I am <br />{Bio.name} 
                 </Title>
@@ -160,10 +162,13 @@ function Hero() {
                         wrapperClassName: 'typewriter-wrapper',
                         cursor: '|',
                     }} /></Span>
-                </TextLoop>
-                <Description>
-                    {Bio.description}
-                </Description>
+                    </TextLoop>
+                </motion.div>
+                <motion.div {...headContentAnimation}>
+                    <Description>
+                        {Bio.description}
+                    </Description>
+                </motion.div>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'center',
@@ -186,9 +191,11 @@ function Hero() {
                     justifyContent: 'center',
                     alignItems: 'center',
                 }}>
-                <Tilt>
-                    <Img src={HeroImg}/>   
-                </Tilt>
+                    <motion.div {...headContentAnimation}>
+                        <Tilt>
+                            <Img src={HeroImg}/>   
+                        </Tilt>
+                    </motion.div>
                 </div>
             </RightContainer>
         </InnerConteinter>     
